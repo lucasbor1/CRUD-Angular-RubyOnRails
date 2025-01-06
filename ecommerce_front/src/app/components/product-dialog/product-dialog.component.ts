@@ -11,7 +11,7 @@ import { ProductService } from '../../services/product.service';
   standalone: true,
   imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, CommonModule],
   templateUrl: './product-dialog.component.html',
-  styleUrls: ['./product-dialog.component.css']
+  styleUrls: ['./product-dialog.component.css'],
 })
 export class ProductDialogComponent {
   product: any = {
@@ -36,7 +36,6 @@ export class ProductDialogComponent {
   saveProduct(): void {
     // Validação dos campos antes de enviar
     if (!this.product.name || !this.product.price || this.product.price <= 0 || this.product.stock < 0) {
-      console.error('Preencha todos os campos obrigatórios corretamente.');
       alert('Por favor, preencha todos os campos obrigatórios corretamente!');
       return;
     }
@@ -46,24 +45,14 @@ export class ProductDialogComponent {
     if (this.data.mode === 'add') {
       // Adicionar novo produto
       this.productService.createProduct(payload).subscribe({
-        next: () => {
-          this.dialogRef.close(true); // Fechar o diálogo ao concluir
-        },
-        error: (error) => {
-          console.error('Erro ao adicionar produto:', error);
-          alert('Erro ao adicionar produto. Tente novamente.');
-        },
+        next: () => this.dialogRef.close(true),
+        error: () => alert('Erro ao adicionar produto. Tente novamente.'),
       });
     } else if (this.data.mode === 'edit') {
       // Atualizar produto existente
       this.productService.updateProduct(this.product.id, payload).subscribe({
-        next: () => {
-          this.dialogRef.close(true); // Fechar o diálogo ao concluir
-        },
-        error: (error) => {
-          console.error('Erro ao editar produto:', error);
-          alert('Erro ao editar produto. Tente novamente.');
-        },
+        next: () => this.dialogRef.close(true),
+        error: () => alert('Erro ao editar produto. Tente novamente.'),
       });
     }
   }

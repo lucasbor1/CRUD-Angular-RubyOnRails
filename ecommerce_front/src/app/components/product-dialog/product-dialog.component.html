@@ -1,26 +1,28 @@
-<h2 mat-dialog-title class="dialog-title">{{ data.mode === 'add' ? 'Adicionar Produto' : 'Editar Produto' }}</h2>
+<h2 mat-dialog-title class="dialog-title">
+  {{ data.mode === 'add' ? 'Adicionar Produto' : 'Editar Produto' }}
+</h2>
 <mat-dialog-content class="dialog-content">
   <form>
     <!-- Nome do Produto -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nome</mat-label>
       <input matInput [(ngModel)]="product.name" placeholder="Digite o nome do produto" name="name" />
     </mat-form-field>
 
     <!-- Preço do Produto -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Preço</mat-label>
       <input matInput type="number" [(ngModel)]="product.price" placeholder="Digite o preço do produto" name="price" />
     </mat-form-field>
 
     <!-- Estoque -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Estoque</mat-label>
       <input matInput type="number" [(ngModel)]="product.stock" placeholder="Digite a quantidade em estoque" name="stock" />
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="dialog-actions">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-raised-button color="primary" (click)="saveProduct()">Salvar</button>
+  <button mat-stroked-button color="warn" mat-dialog-close class="cancel-button">Cancelar</button>
+  <button mat-raised-button color="primary" class="save-button" (click)="saveProduct()">Salvar</button>
 </mat-dialog-actions>

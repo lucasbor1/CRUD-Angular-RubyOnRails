@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-product-list',
@@ -77,11 +78,19 @@ export class ProductListComponent implements OnInit {
 
   // Excluir produto
   deleteProduct(productId: number): void {
-    if (confirm('Tem certeza que deseja excluir este produto?')) {
-      this.productService.deleteProduct(productId).subscribe(() => {
-        this.snackBar.open('Produto excluído com sucesso!', 'Fechar', { duration: 3000 });
-        this.loadProducts();
-      });
-    }
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '300px',
+      data: { message: 'Tem certeza que deseja excluir este produto?' },
+    });
+  
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.productService.deleteProduct(productId).subscribe(() => {
+          this.snackBar.open('Produto excluído com sucesso!', 'Fechar', { duration: 3000 });
+          this.loadProducts();
+        });
+      }
+    });
   }
+  
 }
