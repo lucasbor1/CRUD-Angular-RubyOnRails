@@ -1,0 +1,439 @@
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='EcommerceApi'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='EcommerceApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='EcommerceApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-01-06 20:05:02.316319', '2025-01-06 20:05:02.316323') RETURNING "key" /*application='EcommerceApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+Migrating to CreateProducts (20250106200447)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='EcommerceApi'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "price" decimal, "stock" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='EcommerceApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250106200447') RETURNING "version" /*application='EcommerceApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='EcommerceApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+Started GET "/produtcs" for 127.0.0.1 at 2025-01-06 17:08:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/produtcs"):
+  
+Started GET "/products" for 127.0.0.1 at 2025-01-06 17:08:41 -0300
+Processing by ProductsController#index as */*
+  Parameters: {"name"=>"Produto Exemplo", "description"=>"Descrição do produto.", "price"=>99.99, "stock"=>10, "product"=>{"name"=>"Produto Exemplo", "description"=>"Descrição do produto.", "price"=>99.99, "stock"=>10}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 67ms (Views: 2.4ms | ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2025-01-06 17:08:46 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Produto Exemplo", "description"=>"Descrição do produto.", "price"=>99.99, "stock"=>10, "product"=>{"name"=>"Produto Exemplo", "description"=>"Descrição do produto.", "price"=>99.99, "stock"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "stock", "created_at", "updated_at") VALUES ('Produto Exemplo', 'Descrição do produto.', 99.99, 10, '2025-01-06 20:08:46.427244', '2025-01-06 20:08:46.427244') RETURNING "id" /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+Completed 201 Created in 23ms (Views: 0.4ms | ActiveRecord: 4.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:22:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 49ms (Views: 21.8ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:22:14 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:22:16 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:32:56 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:43:23 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:43:38 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:43:39 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:43:40 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:43:40 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started GET "/products" for ::1 at 2025-01-06 17:44:24 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:44:25 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:45:00 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:47:34 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:47:53 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:48:11 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:48:11 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:48:11 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started GET "/products" for ::1 at 2025-01-06 17:48:47 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:48:50 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started OPTIONS "/products" for ::1 at 2025-01-06 17:49:04 -0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/products"):
+  
+Started POST "/products" for ::1 at 2025-01-06 17:52:34 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 8ms (ActiveRecord: 1.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started GET "/products" for ::1 at 2025-01-06 17:54:47 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 130ms (Views: 11.8ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:56:01 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/products/1" for ::1 at 2025-01-06 17:57:38 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 1 LIMIT 1 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:42:in `set_product'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mProduct Destroy (2.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = 1 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+Completed 204 No Content in 124ms (ActiveRecord: 4.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 17:57:43 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-01-06 17:57:51 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started POST "/products" for ::1 at 2025-01-06 17:58:03 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started POST "/products" for ::1 at 2025-01-06 18:00:04 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started POST "/products" for ::1 at 2025-01-06 18:00:22 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started GET "/products" for ::1 at 2025-01-06 18:22:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EcommerceApi'*/[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 39ms (Views: 2.3ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-01-06 18:22:47 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started POST "/products" for ::1 at 2025-01-06 18:23:03 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started POST "/products" for ::1 at 2025-01-06 18:23:51 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{}}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: product):
+  
+app/controllers/products_controller.rb:46:in `product_params'
+app/controllers/products_controller.rb:17:in `create'
+Started GET "/products" for ::1 at 2025-01-06 18:25:28 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:26:21 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-01-06 18:26:35 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"name"=>"Teste", "description"=>"", "price"=>10, "stock"=>1}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mProduct Create (2.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "stock", "created_at", "updated_at") VALUES ('Teste', '', 10.0, 1, '2025-01-06 21:26:36.026984', '2025-01-06 21:26:36.026984') RETURNING "id" /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+Completed 201 Created in 22ms (Views: 0.4ms | ActiveRecord: 12.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:26:36 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/products/2" for ::1 at 2025-01-06 18:26:54 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 2 LIMIT 1 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:42:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mProduct Destroy (1.9ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = 2 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+Completed 204 No Content in 90ms (ActiveRecord: 2.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:26:54 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-01-06 18:27:03 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"name"=>"Teste", "description"=>"", "price"=>10, "stock"=>1}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mProduct Create (2.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "stock", "created_at", "updated_at") VALUES ('Teste', '', 10.0, 1, '2025-01-06 21:27:03.862933', '2025-01-06 21:27:03.862933') RETURNING "id" /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+Completed 201 Created in 9ms (Views: 3.3ms | ActiveRecord: 2.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:27:03 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:29:13 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PUT "/products/3" for ::1 at 2025-01-06 18:29:17 -0300
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"id"=>3, "name"=>"Teste", "description"=>"", "price"=>10.01, "stock"=>12, "created_at"=>"2025-01-06T21:27:03.862Z", "updated_at"=>"2025-01-06T21:27:03.862Z"}, "id"=>"3"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 3 LIMIT 1 /*action='update',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:42:in `set_product'
+[31mUnpermitted parameters: :id, :description, :created_at, :updated_at. Context: { controller: ProductsController, action: update, request: #<ActionDispatch::Request:0x000001ac02a18a38>, params: {"product"=>{"id"=>3, "name"=>"Teste", "description"=>"", "price"=>10.01, "stock"=>12, "created_at"=>"2025-01-06T21:27:03.862Z", "updated_at"=>"2025-01-06T21:27:03.862Z"}, "controller"=>"products", "action"=>"update", "id"=>"3"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in `update'
+  [1m[36mProduct Update (1.9ms)[0m  [1m[33mUPDATE "products" SET "price" = 10.01, "stock" = 12, "updated_at" = '2025-01-06 21:29:17.649721' WHERE "products"."id" = 3 /*action='update',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:27:in `update'
+Completed 200 OK in 20ms (Views: 0.6ms | ActiveRecord: 12.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:29:17 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:30:31 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:31:02 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/products/3" for ::1 at 2025-01-06 18:31:12 -0300
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = 3 LIMIT 1 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:42:in `set_product'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mProduct Destroy (1.7ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = 3 /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='destroy',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:36:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 2.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:31:12 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/products" for ::1 at 2025-01-06 18:31:28 -0300
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"name"=>"Pc", "description"=>"", "price"=>5000, "stock"=>2}}
+[31mUnpermitted parameter: :description. Context: { controller: ProductsController, action: create, request: #<ActionDispatch::Request:0x000001ac011880e0>, params: {"product"=>{"name"=>"Pc", "description"=>"", "price"=>5000, "stock"=>2}, "controller"=>"products", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mProduct Create (7.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "stock", "created_at", "updated_at") VALUES ('Pc', NULL, 5000.0, 2, '2025-01-06 21:31:28.106677', '2025-01-06 21:31:28.106677') RETURNING "id" /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:18:in `create'
+Completed 201 Created in 12ms (Views: 0.4ms | ActiveRecord: 7.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/products" for ::1 at 2025-01-06 18:31:28 -0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" /*action='index',application='EcommerceApi',controller='products'*/[0m
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
