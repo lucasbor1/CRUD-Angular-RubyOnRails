@@ -1,0 +1,42 @@
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-toolbar {
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.actions {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+mat-card {
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-header-cell {
+  font-weight: bold;
+  text-align: left;
+}
+
+mat-cell {
+  text-align: left;
+}
+
+mat-icon {
+  font-size: 1.2rem;
+}
