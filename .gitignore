@@ -73,3 +73,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+ecommerce_api/storage
+ecommerce_api/tmp
+ecommerce_front/.angular/cache
